@@ -5,7 +5,7 @@ Authors@R:
     person(given = "{ierce",
            family = "McNie",
            role = c("aut", "cre"),
-           email = "piercemcnie@motuhake.xyz",
+           email = "piercemcnie@motuhake.xyz")
 Description: Convenience package for the functions used in my PhD.
 License: use_gpl3_license()
 Encoding: UTF-8
