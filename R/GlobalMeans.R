@@ -73,17 +73,17 @@ Means <- function(workingdir, vari, i, burnin, reps=0, r=32, fun="mean"){
 		if(is.null(ncol(prims))) return(c(0,0,0,0,0,0))
 		
 		primsmean=apply(prims, 1, mean)
-		primsse=se(prims, r)
+		primsse=se(prims)
 		secsmean=apply(secs, 1, mean)
-		secsse=se(secs, r)
+		secsse=se(secs)
 		nonsmean=apply(nons, 1, mean)
-		nonsse=se(nons, r)
+		nonsse=se(nons)
 		sbwsmean=apply(sbws, 1, mean)
-		sbwsse=se(sbws, r)
+		sbwsse=se(sbws)
 		parasmean=apply(paras, 1, mean)
-		parasse=se(paras, r)
+		parasse=se(paras)
 		cdsmean=apply(cds, 1, mean)
-		cdsse=se(cds, r)
+		cdsse=se(cds)
 
 		globmax=max(globmax, max(allvals))
 		if(fun=='mean'){
