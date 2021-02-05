@@ -6,16 +6,19 @@
 #' @param workingdir Directory the data is in
 #' @param vari Variable
 #' @param i Value
-#' @param r Total number of simulations
-#' @param fun Function
-#' @return The number of slices in the array
+#' @param burnin Length of burn in period
+#' @param reps Total length of data. Default=nrow(data).
+#' @param r Total number of simulations. Default=32.
+#' @param fun Function. Default="mean".
+#' @return Summary statistics
 #' @export
-Means <- function(workingdir, vari, i, r, fun="mean"){
+Means <- function(workingdir, vari, i, burnin, reps=0, r=32, fun="mean"){
 	allvals=matrix(2,2,2)
 	y=1
 	while(nrow(allvals) <= 10){
 		if(burnin > 0){
 		allvals= read.csv(paste0(workingdir,"Output", vari, i ,  "run", y, ".csv"))[-c(1:burnin),]
+		if(reps==0){reps=nrow(allvals)}
 			#if(allvals[nrow(allvals),"Parasitoids"] == 0){
 			#	allvals=matrix(2,2,2)
 			#	if(y > r){
@@ -26,6 +29,7 @@ Means <- function(workingdir, vari, i, r, fun="mean"){
 			#}
 		} else {
 		allvals= read.csv(paste0(workingdir,"Output", vari, i ,  "run", y, ".csv"))
+		if(reps==0){reps=nrow(allvals)}
 		}
 		prims=allvals[,1]
 		secs=allvals[,2]

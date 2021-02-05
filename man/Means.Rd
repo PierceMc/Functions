@@ -4,7 +4,7 @@
 \alias{Means}
 \title{Summary statistics for global temporal data (Output...)}
 \usage{
-Means(workingdir, vari, i, r, fun = "mean")
+Means(workingdir, vari, i, burnin, reps = 0, r = 32, fun = "mean")
 }
 \arguments{
 \item{workingdir}{Directory the data is in}
@@ -13,12 +13,16 @@ Means(workingdir, vari, i, r, fun = "mean")
 
 \item{i}{Value}
 
-\item{r}{Total number of simulations}
+\item{burnin}{Length of burn in period}
 
-\item{fun}{Function}
+\item{reps}{Total length of data. Default=nrow(data).}
+
+\item{r}{Total number of simulations. Default=32.}
+
+\item{fun}{Function. Default="mean".}
 }
 \value{
-The number of slices in the array
+Summary statistics
 }
 \description{
 Returns summary statistics for outputs of the model from Output... files
