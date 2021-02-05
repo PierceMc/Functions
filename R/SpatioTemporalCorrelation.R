@@ -9,7 +9,6 @@
 #' @param verbose Print steps
 #' @param timelag Increase timelag. Default=0
 #' @param SecondArray 3-D array of landscape snapshots for another species (from OutbreakLandscape Files)
-#' @param 
 #' @return Data frame for correlogram of Rij
 #' @export
 rij.corr <- function(Array, ms, N, dclasses, parallel = T, ncores=4, verbose=F, timelag=0, SecondArray=NA){
