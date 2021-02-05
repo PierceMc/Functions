@@ -98,7 +98,7 @@ Means <- function(workingdir, vari, i, burnin, reps=0, r=32, fun="mean"){
 			MeanSBWSD =signif(TotEr(sbwsmean, sbwsse), 3)
 			MeanParasitoidSD = signif(TotEr(parasmean, parasse), 3)
 			MeanCDSD = round(TotEr(cdsmean, cdsse), 3)
-			return(data.frame(c('Primary', 'Secondary', 'NonHost', 'Herbivore', 'Parasitoid','Defoliation'), c(MeanPrim, MeanSec, MeanNon, MeanSBW, MeanParasitoid, MeanCD), c(MeanPrimSD, MeanSecSD, MeanNonSD, MeanSBWSD, MeanParasitoidSD, MeanCDSD)))
+			return(data.frame(Variable=c('Primary', 'Secondary', 'NonHost', 'Herbivore', 'Parasitoid','Defoliation'),Mean=c(MeanPrim, MeanSec, MeanNon, MeanSBW, MeanParasitoid, MeanCD),SD=c(MeanPrimSD, MeanSecSD, MeanNonSD, MeanSBWSD, MeanParasitoidSD, MeanCDSD)))
 		} else if(fun == "PeriodMax"){
 			PeriodMean=round(mean(periods, na.rm=T), 2)
 			PeriodSD=round(sd(periods), 2)
