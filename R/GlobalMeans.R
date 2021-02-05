@@ -110,3 +110,11 @@ Means <- function(workingdir, vari, i, burnin, reps=0, r=32, fun="mean"){
 		return(c(NA, NA, NA, NA, NA, NA)) 
 	}
 }
+
+
+#' @export
+TotEr <- function(x, e){
+	return(sqrt((sum(e)/length(e))))
+}
+
+
