@@ -85,7 +85,6 @@ Means <- function(workingdir, vari, i, burnin, reps=0, r=32, fun="mean"){
 		cdsmean=apply(cds, 1, mean)
 		cdsse=se(cds)
 
-		globmax=max(globmax, max(allvals))
 		if(fun=='mean'){
 			MeanPrim= signif(mean(primsmean, na.rm=T), 2)
 			MeanSec= signif(mean(secsmean, na.rm=T), 2)
