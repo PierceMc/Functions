@@ -10,9 +10,10 @@
 #' @param reps Total length of data. Default=nrow(data).
 #' @param r Total number of simulations. Default=32.
 #' @param fun Function. Default="mean".
+#' @param raw Return raw data? Boolean. Default=F
 #' @return Summary statistics
 #' @export
-Means <- function(workingdir, vari, i, burnin, reps=0, r=32, fun="mean"){
+Means <- function(workingdir, vari, i, burnin, reps=0, r=32, fun="mean", raw=F){
 	allvals=matrix(2,2,2)
 	y=1
 	while(nrow(allvals) <= 10){
@@ -68,6 +69,11 @@ Means <- function(workingdir, vari, i, burnin, reps=0, r=32, fun="mean"){
 				periods <- c(periods, max)
 				peak <- c(peak, periodogramdata(newvals$SBW, 1, 2)[max])
 			} 
+		}
+
+		if(raw == T){
+			out <- data.frame(Primary=prims, Secondary=secs, NonHost=nons, Herbivore=sbws, Parasitoids=paras, Defoliation=cds)
+			return(out)
 		}
 
 		if(is.null(ncol(prims))) return(c(0,0,0,0,0,0))
