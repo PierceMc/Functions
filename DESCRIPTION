@@ -2,7 +2,7 @@ Package: phd
 Title: PhD Functions
 Version: 0.1
 Authors@R: 
-    person(given = "{ierce",
+    person(given = "{Pierce",
            family = "McNie",
            role = c("aut", "cre"),
            email = "piercemcnie@motuhake.xyz")
