@@ -6,15 +6,16 @@
 #' @param s landscape size. Default=200.
 #' @param p Species. Default=SBW.
 #' @param t Optional. Title for the plot. Default: False.
+#' @param timestep Optional. Timestep of the data file to plot. Default: 50
 #' @return Raster image of OutbreakLandscape file.
 #' @export
-makeimage <- function(d, V, v, s=200, p='SBW', t=F){
+makeimage <- function(d, V, v, s=200, p='SBW', t=F, timestep=50){
 	require(ggplot2)
 	require(reshape2)
 	Out <- list()
 	for(i in v){
 		tmp <- read.csv(paste0(d, 'OutbreakLandscape', V, i, 'run4.csv', p, '.csv'))
-		landscapesquare <- square(tmp[50,])
+		landscapesquare <- square(tmp[timestep,])
 		landscapesmall <- as.matrix(landscapesquare[1:s,1:s])
 		colnames(landscapesmall) <- paste0("P", c(1:s))
 		rownames(landscapesmall) <- paste0("p", c(1:s))
