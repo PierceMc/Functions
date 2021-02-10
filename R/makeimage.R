@@ -9,6 +9,8 @@
 #' @return Raster image of OutbreakLandscape file.
 #' @export
 makeimage <- function(d, V, v, s=200, p='SBW', t=F){
+	require(ggplot2)
+	require(reshape2)
 	Out <- list()
 	for(i in v){
 		tmp <- read.csv(paste0(d, 'OutbreakLandscape', V, i, 'run4.csv', p, '.csv'))
@@ -27,6 +29,4 @@ makeimage <- function(d, V, v, s=200, p='SBW', t=F){
 	}
 	return(Out)
 }
-
-
 
