@@ -17,10 +17,9 @@ Morans.LC <- function(BaseDir, Variable, Values, dclasses, Species='SBW', NSims=
 
 	Output <- list()
 	
-	if(Transition == 'transitionfunc'){
-		transitionfunc <- function(j) ifelse(j[2]==1, 1, 0.4)
-	} else {
+	if(Transition != 'transitionfunc'){
 		transitionfunc  <- Transition
+	} else {
 	}
 	ms = Samples
 	SampleLength <- 15
@@ -102,4 +101,6 @@ Morans.LC <- function(BaseDir, Variable, Values, dclasses, Species='SBW', NSims=
 		return(Output)
 }
 
+
+transitionfunc <- function(j) ifelse(j[2]==1, 1, 0.4)
 
