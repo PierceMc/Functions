@@ -98,7 +98,6 @@ MoranI <- function(sgrid,data,dclasses, weight=F){
       stop("vectors must be same length")
     arrows(x,y+upper, x, y-lower, angle=90, code=3, length=length, ...)
   }
-  
   out=new("moranI",distances=cl,mI=I,number_pairs=Nh/2,prob.adjust=p.adjust(prob,'holm'),varI=VarI)
   setMethod("plot", "moranI",  function (x, xlab ="" , ylab ="" , axes = FALSE , asp =1 ){
     maxd=max(x@distances)
@@ -109,8 +108,5 @@ MoranI <- function(sgrid,data,dclasses, weight=F){
     error.bar(x@distances,x@mI, 1.96*sqrt(x@varI))
   })
   
-  setMethod("show", "moranI",  function (object) {
-    print(data.frame(distances=cl,mI=I,number_pairs=Nh/2,prob.adjust=p.adjust(prob,'holm'),varI=VarI))
-  })
   return(out)
 }
