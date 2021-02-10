@@ -87,27 +87,7 @@ MoranI <- function(sgrid,data,dclasses, weight=F){
       }
     }
   }
-  setClass("moranI",slots=c(distances="vector", 
-                            mI="vector", 
-                            number_pairs="vector",
-                            prob.adjust="vector",
-                            varI="vector"
-  )
-  )
-  error.bar <- function(x, y, upper, lower=upper, length=0.1,...){
-    if(length(x) != length(y) | length(y) !=length(lower) | length(lower) != length(upper))
-      stop("vectors must be same length")
-    arrows(x,y+upper, x, y-lower, angle=90, code=3, length=length, ...)
-  }
-  out=new("moranI",distances=cl,mI=I,number_pairs=Nh/2,prob.adjust=p.adjust(prob,'holm'),varI=VarI)
-  setMethod("plot", "moranI",  function (x, xlab ="" , ylab ="" , axes = FALSE , asp =1 ){
-    maxd=max(x@distances)
-    maxy=max(x@mI)
-    plot(x@distances,x@mI,xlab='Distance',ylab='Moran\'s I',xlim=c(0, maxd+maxd/20), ylim=c(-0.15, 1.15))
-    title('Moran\'s I')
-    lines(c(0,maxd+maxd/10),c(0,0))
-    error.bar(x@distances,x@mI, 1.96*sqrt(x@varI))
-  })
+  out=data.frame(distances=cl,mI=I,number_pairs=Nh/2,prob.adjust=p.adjust(prob,'holm'),varI=VarI)
   
   return(out)
 }
