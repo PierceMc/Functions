@@ -4,7 +4,7 @@
 \alias{LandscapeDataToArray}
 \title{Convert Cellular model output to 3 dimensional array}
 \usage{
-LandscapeDataToArray(data)
+LandscapeDataToArray(data, verbose = F)
 }
 \arguments{
 \item{data}{Output file from Cellular Automaton (OutbreakLandscape)}
