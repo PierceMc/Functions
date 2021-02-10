@@ -4,21 +4,23 @@
 \alias{makeimage}
 \title{Make raster plot of an OutbreakLandscape file}
 \usage{
-makeimage(d, V, v, s = 200, p = "SBW")
+makeimage(d, V, v, s = 200, p = "SBW", t = F)
 }
 \arguments{
-\item{d}{Directory containing data}
+\item{d}{Directory containing data.}
 
-\item{V}{Variable of interest}
+\item{V}{Variable of interest.}
 
-\item{v}{value of interest}
+\item{v}{vector of values.}
 
-\item{s}{landscape size. Default=200}
+\item{s}{landscape size. Default=200.}
 
-\item{p}{Species. Default=SBW}
+\item{p}{Species. Default=SBW.}
+
+\item{t}{Optional. Title for the plot. Default: False.}
 }
 \value{
-Histogram of patch sizes
+Raster image of OutbreakLandscape file.
 }
 \description{
 Make raster plot of an OutbreakLandscape file
