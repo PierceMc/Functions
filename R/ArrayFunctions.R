@@ -12,11 +12,11 @@ nslice=function(x){
 #' @param data Output file from Cellular Automaton (OutbreakLandscape)
 #' @return 
 #' @export
-LandscapeDataToArray <- function(data){
+LandscapeDataToArray <- function(data,verbose=F){
 	landscapeSize <- sqrt(length(data[1,]))
 	testarray <- array(NaN, c(landscapeSize, landscapeSize, nrow(data)))
 	for(i in 1:nrow(data)){
-		if(silent==F) print(i)
+		if(verbose==T) print(i)
 		testarray[,,i] <- as.matrix(square(data[i,]))
 	}
 	return(testarray)
