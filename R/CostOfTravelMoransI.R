@@ -82,7 +82,7 @@ Morans.LC <- function(BaseDir, Variable, Values, dclasses, Species='SBW', NSims=
 				datww.sym <- forceSymmetric(as.matrix(distanceasthewolfwalks), "L")
 				w=as.matrix(distanceasthewolfwalks)
 				Morans.LC.Res <- MoranI(w, df, dclasses, weight=T)
-				Morans.LC.Res.DF <- cbind("distances"=Morans.LC.Res@distances, 'mI'=Morans.LC.Res@mI, 'number_pairs'=Morans.LC.Res@number_pairs, 'prob.adjust'=Morans.LC.Res@prob.adjust, 'varI'=Morans.LC.Res@varI); Morans.LC.Res.DF <- as.data.frame(Morans.LC.Res.DF); 
+				Morans.LC.Res.DF <- as.data.frame(Morans.LC.Res) 
 				Morans.LC.Res.DF$Simulation = s
 				Morans.LC.Res.DF$Sample=samples
 				Morans.LC.Res.DF$Value=V
