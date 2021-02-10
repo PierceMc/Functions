@@ -4,7 +4,7 @@
 \alias{makeimage}
 \title{Make raster plot of an OutbreakLandscape file}
 \usage{
-makeimage(d, V, v, s = 200, p = "SBW", t = F)
+makeimage(d, V, v, s = 200, p = "SBW", t = F, timestep = 50)
 }
 \arguments{
 \item{d}{Directory containing data.}
@@ -18,6 +18,8 @@ makeimage(d, V, v, s = 200, p = "SBW", t = F)
 \item{p}{Species. Default=SBW.}
 
 \item{t}{Optional. Title for the plot. Default: False.}
+
+\item{timestep}{Optional. Timestep of the data file to plot. Default: 50}
 }
 \value{
 Raster image of OutbreakLandscape file.

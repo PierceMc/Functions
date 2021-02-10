@@ -4,7 +4,6 @@
 #' @param data Values of points
 #' @param dclasses Distance classes
 #' @return Weird Data frame with data
-#' @export
 MoranI <- function(sgrid,data,dclasses, weight=F){
 
 

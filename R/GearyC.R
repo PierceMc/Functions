@@ -1,10 +1,9 @@
-#' Calculate Geary's C 
-#'
-#' @param sgrid X and Y values of points
-#' @param data Values of points
-#' @param dclasses Distance classes
-#' @return Weird Data frame with data
-#' @export
+####' Calculate Geary's C 
+####'
+####' @param sgrid X and Y values of points
+####' @param data Values of points
+####' @param dclasses Distance classes
+####' @return Weird Data frame with data
 GearyC <- function(sgrid,data,dclasses){
   
   # Guillaume Larocque 2014
