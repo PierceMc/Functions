@@ -19,6 +19,7 @@ makeimage <- function(d, V, v, s=200, p='SBW', t=F){
 		colnames(landscapesmall) <- paste0("P", c(1:s))
 		rownames(landscapesmall) <- paste0("p", c(1:s))
 		landscapeplot <- as.data.frame(reshape2::melt(landscapesmall))
+		landscapeplot[,3] <- landscapeplot[,3]+1
 		if(t == T){ 
 		Out[[which(v == i)]] <- ggplot(landscapeplot, aes(x = Var2, y = Var1)) +   geom_raster(aes(fill=log(value)))+ scale_fill_gradient(low="white", high="green") + labs(x="", y="") + theme_minimal()+ theme(legend.position='none', axis.text.x = element_blank(),axis.ticks.x = element_blank(),axis.text.y = element_blank(),axis.ticks.y = element_blank()) + coord_equal() + ggtitle(paste(V, i)) 
 		} else if(is.character(t)){
