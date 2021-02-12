@@ -70,8 +70,6 @@ Morans.LC <- function(BaseDir, Variable, Values, dclasses, Species='SBW', NSims=
 			cl <- makeCluster(ncores)
 			registerDoParallel(cl)
 			data.ms <- foreach(samples = c(1:ms), .combine=rbind, .packages=c('spdep', 'sp', 'gdistance')) %dopar% {
-
-				if(verbose==T) print(paste('Assessing sample', samples))
 				landscapesample_no0=landscapesmallxyz_no0[sample(c(1:nrow(landscapesmallxyz_no0)), N),]
 				xy <- as.matrix(landscapesample_no0[,1:2])
 				df <- as.data.frame(landscapesample_no0[,3])

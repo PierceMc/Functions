@@ -6,7 +6,7 @@
 #' @param s landscape size. Default=200.
 #' @param p Species. Default=SBW.
 #' @param t Optional. Title for the plot. Default: False.
-#' @param timestep Optional. Timestep of the data file to plot. Default: 50
+#' @param timestep Optional. Timestep of the data file to plot OR 'max' to return the timestep with the highest overall values. Default: 50
 #' @param log Optional. Log the values before plotting.
 #' @return Raster image of OutbreakLandscape file.
 #' @export
@@ -16,6 +16,10 @@ makeimage <- function(d, V, v, s=200, p='SBW', t=F, timestep=50, log=T){
 	Out <- list()
 	for(i in v){
 		tmp <- read.csv(paste0(d, 'OutbreakLandscape', V, i, 'run4.csv', p, '.csv'))
+		if(timestep == 'max') {
+			m <- apply(tmp, 1, sum)
+			timestep = which(m == max(m))
+		}
 		landscapesquare <- square(tmp[timestep,])
 		landscapesmall <- as.matrix(landscapesquare[1:s,1:s])
 		colnames(landscapesmall) <- paste0("P", c(1:s))

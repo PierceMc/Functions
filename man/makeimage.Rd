@@ -19,7 +19,7 @@ makeimage(d, V, v, s = 200, p = "SBW", t = F, timestep = 50, log = T)
 
 \item{t}{Optional. Title for the plot. Default: False.}
 
-\item{timestep}{Optional. Timestep of the data file to plot. Default: 50}
+\item{timestep}{Optional. Timestep of the data file to plot OR 'max' to return the timestep with the highest overall values. Default: 50}
 
 \item{log}{Optional. Log the values before plotting.}
 }

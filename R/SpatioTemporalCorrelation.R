@@ -12,6 +12,11 @@
 #' @return Data frame for correlogram of Rij
 #' @export
 rij.corr <- function(Array, ms, N, dclasses, parallel = T, ncores=4, verbose=F, timelag=0, SecondArray=NA){
+
+	require(raster)
+	require(doSNOW)
+	require(doParallel)
+
 	nd<-length(dclasses)
 	tmpdata <- data.frame()
 	starting=1
