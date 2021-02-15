@@ -98,10 +98,10 @@ Means <- function(workingdir, vari, i, burnin, reps=0, r=32, fun="mean", raw=F){
 			MeanSBW = signif(mean(sbwsmean, na.rm=T), 2)
 			MeanParasitoid = signif(mean(parasmean, na.omit=T), 2)
 			MeanCD = signif(mean(cdsmean, na.rm=T), 2)
-			MeanPrimSD= round(TotEr(primsmean, primsse), 3)
-			MeanSecSD=  round(TotEr(secsmean, secsse), 3)
-			MeanNonSD=  round(TotEr(nonsmean, nonsse), 3)
-			MeanSBWSD =signif(TotEr(sbwsmean, sbwsse), 3)
+			MeanPrimSD= round(se(primsse), 3)
+			MeanSecSD=  round(se(secsse), 3)
+			MeanNonSD=  round(se(nonsse), 3)
+			MeanSBWSD =signif(se(sbwsse), 3)
 			MeanParasitoidSD = signif(TotEr(parasmean, parasse), 3)
 			MeanCDSD = round(TotEr(cdsmean, cdsse), 3)
 			return(data.frame(Variable=c('Primary', 'Secondary', 'NonHost', 'Herbivore', 'Parasitoid','Defoliation'),Mean=c(MeanPrim, MeanSec, MeanNon, MeanSBW, MeanParasitoid, MeanCD),SD=c(MeanPrimSD, MeanSecSD, MeanNonSD, MeanSBWSD, MeanParasitoidSD, MeanCDSD)))
@@ -119,7 +119,8 @@ Means <- function(workingdir, vari, i, burnin, reps=0, r=32, fun="mean", raw=F){
 
 
 #' @export
-TotEr <- function(x, e){
+TotEr <- function(e, x=NULL, p=0.05){
+#qt(p=p, df=length(e)-1, lower.tail=TRUE)
 	return(sqrt((sum(e)/length(e))))
 }
 
