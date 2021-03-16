@@ -8,13 +8,14 @@ square=function(d, rows = 0, cols = 0){
 		rows=sqrt(length(d))
 		cols=sqrt(length(d))
 	}
-	output=data.frame()
-	for(i in 1:rows){
-		nextline=d[1:cols]
-		names(nextline) <- c(1:rows)
-		output=rbind(output, nextline)
-		d=d[-(1:cols)]
-	}
+
+	output=matrix(d, rows, cols)
+	#for(i in 1:rows){
+		#nextline=d[1:cols]
+		#names(nextline) <- c(1:rows)
+		#output=rbind(output, nextline)
+		#d=d[-(1:cols)]
+	#}
 	return(output)
 }
 
