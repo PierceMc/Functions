@@ -13,6 +13,7 @@ nslice=function(x){
 #' @return 
 #' @export
 LandscapeDataToArray <- function(d,verbose=F){
+	d=as.matrix(d)
 	landscapeSize <- sqrt(length(d[1,]))
 	testarray <- array(NaN, c(landscapeSize, landscapeSize, nrow(d)))
 	for(i in 1:nrow(d)){
