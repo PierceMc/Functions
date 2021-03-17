@@ -168,7 +168,7 @@ AveragePeriodogram <- function(DataDir, Variable, Value, Species, globr, reps, b
 		tmpPlotdata=periodogramdata(tmpdata, 1, 2)
 		PlotData=cbind(PlotData, tmpPlotdata)
 	}
-	OutputPlotData=data.frame("Freq." = PlotData[,1], "Mean" = apply(PlotData[,-1], 1, mean))
+	OutputPlotData=data.frame("Freq." = PlotData[,1], "Mean" = apply(PlotData[,-1], 1, mean, na.rm=T))
 	sedat=data.frame(matrix(unlist(PlotData[,-1]), nrow=nrow(PlotData), byrow=T), stringsAsFactors=F)
 	SE <-  apply(sedat, 1, se)
 	SE[is.infinite(SE)] = 0
