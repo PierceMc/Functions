@@ -16,7 +16,8 @@ AveragePeriodogram(
   Names = 0,
   Title = T,
   yl = T,
-  data = F
+  data = F,
+  Density = F
 )
 }
 \arguments{
@@ -40,7 +41,13 @@ AveragePeriodogram(
 
 \item{yl}{Remove y label}
 
-\item{data}{optional: Return plot data rather than grob}
+\item{data}{\itemize{
+\item optional: Return plot data rather than grob
+}}
+
+\item{Density}{\itemize{
+\item optional: Value of total area for density calculations
+}}
 
 \item{Values}{Vector of parameter values for the Moran's I to be calculated for}
 }

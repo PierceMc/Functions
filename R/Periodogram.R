@@ -137,6 +137,7 @@ periodogramplotdata<- function(sbw, smoothing, spli, val="", struc="list"){
 	}
 
 }
+
 #' Calculate Average periodogram
 #'
 #' @param DataDir Directory containing the data
@@ -150,14 +151,18 @@ periodogramplotdata<- function(sbw, smoothing, spli, val="", struc="list"){
 #' @param Names sometimes optional: Vection of names from data file
 #' @param Title optional: Plot title
 #' @param yl Remove y label
-#' @param data optional: Return plot data rather than grob
+#' @param data - optional: Return plot data rather than grob
+#' @param Density - optional: Value of total area for density calculations
 #' @return Standard Error
 #' @export
-AveragePeriodogram <- function(DataDir, Variable, Value, Species, globr, reps, burnin, plotmax=0, Names=0, Title=T, yl=T, data=F){
+AveragePeriodogram <- function(DataDir, Variable, Value, Species, globr, reps, burnin, plotmax=0, Names=0, Title=T, yl=T, data=F, Density=F){
 	if(globr < 1)stop('No data'); 
 	tmpdata <- read.csv(paste0(DataDir, 'Output', Variable, Value, "run1.csv"), header=T)
 	if(length(Names) > 1)(colnames(tmpdata)=Names)
 	tmpdata=tmpdata[burnin:(reps-2),Species]
+	if(is.numeric(Density)){
+		tmpdata <- tmpdata/Density
+	}
 	tmpPlotdata=periodogramplotdata(tmpdata, 1, 2)
 	PlotData=tmpPlotdata[[1]]
 	PlotData=cbind(PlotData, tmpPlotdata[[2]])
@@ -187,3 +192,8 @@ AveragePeriodogram <- function(DataDir, Variable, Value, Species, globr, reps, b
 	}
 
 }
+
+
+
+
+

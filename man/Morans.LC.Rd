@@ -15,7 +15,8 @@ Morans.LC(
   N = 2000,
   Transition = "transitionfunc",
   ncores = 4,
-  verbose = F
+  verbose = F,
+  SampleLength = 15
 )
 }
 \arguments{
