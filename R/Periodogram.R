@@ -158,6 +158,7 @@ periodogramplotdata<- function(sbw, smoothing, spli, val="", struc="list"){
 AveragePeriodogram <- function(DataDir, Variable, Value, Species, globr, reps, burnin, plotmax=0, Names=0, Title=T, yl=T, data=F, Density=F){
 	if(globr < 1)stop('No data'); 
 	tmpdata <- read.csv(paste0(DataDir, 'Output', Variable, Value, "run1.csv"), header=T)
+	Hosts=F
 	if(Species %in% c("Hosts", "Host", "host", "hosts")){Hosts = T}
 	if(length(Names) > 1)(colnames(tmpdata)=Names)
 	if(Hosts){
