@@ -158,8 +158,17 @@ periodogramplotdata<- function(sbw, smoothing, spli, val="", struc="list"){
 AveragePeriodogram <- function(DataDir, Variable, Value, Species, globr, reps, burnin, plotmax=0, Names=0, Title=T, yl=T, data=F, Density=F){
 	if(globr < 1)stop('No data'); 
 	tmpdata <- read.csv(paste0(DataDir, 'Output', Variable, Value, "run1.csv"), header=T)
+	if(Species %in% c("Hosts", "Host", "host", "hosts")){Hosts = T}
 	if(length(Names) > 1)(colnames(tmpdata)=Names)
-	tmpdata=tmpdata[burnin:(reps-2),Species]
+	if(Hosts){
+		print(T)
+		tmp1=tmpdata[burnin:(reps-2),"Primary"]
+		tmp2=tmpdata[burnin:(reps-2),"Secondary"]
+		tmpdata <- tmp1+tmp2
+	} else {
+		print(F)
+		tmpdata=tmpdata[burnin:(reps-2),Species]
+	}
 	if(is.numeric(Density)){
 		tmpdata <- tmpdata/Density
 	}
@@ -169,7 +178,13 @@ AveragePeriodogram <- function(DataDir, Variable, Value, Species, globr, reps, b
 	for(i in 2:globr){
 		tmpdata <- read.csv(paste0(DataDir, 'Output', Variable, Value, "run", i, ".csv"), header=T)
 		if(length(Names) > 1)(colnames(tmpdata)=Names)
-		tmpdata=tmpdata[burnin:(reps-2),Species]
+		if(Hosts){
+			tmp1=tmpdata[burnin:(reps-2),"Primary"]
+			tmp2=tmpdata[burnin:(reps-2),"Secondary"]
+			tmpdata <- tmp1+tmp2
+		} else {
+			tmpdata=tmpdata[burnin:(reps-2),Species]
+		}
 		tmpPlotdata=periodogramdata(tmpdata, 1, 2)
 		PlotData=cbind(PlotData, tmpPlotdata)
 	}
