@@ -161,12 +161,10 @@ AveragePeriodogram <- function(DataDir, Variable, Value, Species, globr, reps, b
 	if(Species %in% c("Hosts", "Host", "host", "hosts")){Hosts = T}
 	if(length(Names) > 1)(colnames(tmpdata)=Names)
 	if(Hosts){
-		print(T)
 		tmp1=tmpdata[burnin:(reps-2),"Primary"]
 		tmp2=tmpdata[burnin:(reps-2),"Secondary"]
 		tmpdata <- tmp1+tmp2
 	} else {
-		print(F)
 		tmpdata=tmpdata[burnin:(reps-2),Species]
 	}
 	if(is.numeric(Density)){
