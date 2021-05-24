@@ -17,13 +17,14 @@ ma <- function(x, n = 5){stats::filter(x, rep(1 / n, n), sides = 2)}
 #' Calculate periodogram
 #'
 #' @param sbw Vector of values
-#' @param smoothing window for moving average
-#' @param spli should be 2
-#' @param val Title for plot
-#' @param averageline Line placement for an averageline 
+#' @param optional: smoothing window for moving average
+#' @param optional: spli should be 2
+#' @param optional: val Title for plot
+#' @param optional: averageline Line placement for an averageline 
+#' @param optional: data 'All' to return Frequency and Intensity data, Periods to return Intensity only
 #' @return periodogram plot (ggplot)
 #' @export
-periodogram<- function(sbw, smoothing=1, spli=2, val="", averageline=0){
+periodogram<- function(sbw, smoothing=1, spli=2, val="", averageline=0, data=F){
 	sbw = sbw-mean(sbw)
 	sbw <- ma(sbw, smoothing)
 	sbw <- sbw[-c(1:smoothing,(length(sbw)-smoothing):length(sbw))]
@@ -37,8 +38,10 @@ periodogram<- function(sbw, smoothing=1, spli=2, val="", averageline=0){
 	P <- ggplot() + geom_line(aes(x=freq[2:(N/spli)], y=p[2:(N/spli)])) + xlab("Freq.") +ggtitle(val)
 	if(data=F){
 		return(P)
-	} else {
+	} else if(data='All' {
 		return(list(freq[2:(N/spli)], p[2:(N/spli)]))
+	} else {
+		return(p[2:(N/spli)])
 	}
 }
 
