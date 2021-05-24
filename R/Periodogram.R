@@ -23,7 +23,7 @@ ma <- function(x, n = 5){stats::filter(x, rep(1 / n, n), sides = 2)}
 #' @param averageline Line placement for an averageline 
 #' @return periodogram plot (ggplot)
 #' @export
-periodogram<- function(sbw, smoothing, spli=2, val="", averageline=0){
+periodogram<- function(sbw, smoothing=1, spli=2, val="", averageline=0){
 	sbw = sbw-mean(sbw)
 	sbw <- ma(sbw, smoothing)
 	sbw <- sbw[-c(1:smoothing,(length(sbw)-smoothing):length(sbw))]
@@ -35,7 +35,11 @@ periodogram<- function(sbw, smoothing, spli=2, val="", averageline=0){
 	p[2:(N/spli)] = spli*p[2:(N/spli)];
 	freq<-seq(0,(Fs/spli),by=(Fs/N))
 	P <- ggplot() + geom_line(aes(x=freq[2:(N/spli)], y=p[2:(N/spli)])) + xlab("Freq.") +ggtitle(val)
-	return(P)
+	if(data=F){
+		return(P)
+	} else {
+		return(list(freq[2:(N/spli)], p[2:(N/spli)]))
+	}
 }
 
 #' Find peak from periodogram
@@ -138,7 +142,7 @@ periodogramplotdata<- function(sbw, smoothing, spli, val="", struc="list"){
 
 }
 
-#' Calculate Average periodogram
+#' Calculate Average periodogram over whole landscape from aggregate data in 'Output files'
 #'
 #' @param DataDir Directory containing the data
 #' @param Variable Name of the Variable in the filename
@@ -153,7 +157,7 @@ periodogramplotdata<- function(sbw, smoothing, spli, val="", struc="list"){
 #' @param yl Remove y label
 #' @param data - optional: Return plot data rather than grob
 #' @param Density - optional: Value of total area for density calculations
-#' @return Standard Error
+#' @return Grob with the average peiodogram plotted if data = F, data.frame containing the data used to produce grob if data = T
 #' @export
 AveragePeriodogram <- function(DataDir, Variable, Value, Species, globr, reps, burnin, plotmax=0, Names=0, Title=T, yl=T, data=F, Density=F){
 	if(globr < 1)stop('No data'); 
