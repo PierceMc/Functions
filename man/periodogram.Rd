@@ -4,18 +4,12 @@
 \alias{periodogram}
 \title{Calculate periodogram}
 \usage{
-periodogram(sbw, smoothing, spli = 2, val = "", averageline = 0)
+periodogram(sbw, smoothing = 1, spli = 2, val = "", averageline = 0, data = F)
 }
 \arguments{
 \item{sbw}{Vector of values}
 
-\item{smoothing}{window for moving average}
-
-\item{spli}{should be 2}
-
-\item{val}{Title for plot}
-
-\item{averageline}{Line placement for an averageline}
+\item{optional:}{data 'All' to return Frequency and Intensity data, Periods to return Intensity only}
 }
 \value{
 periodogram plot (ggplot)

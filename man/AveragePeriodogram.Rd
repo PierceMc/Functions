@@ -2,7 +2,7 @@
 % Please edit documentation in R/Periodogram.R
 \name{AveragePeriodogram}
 \alias{AveragePeriodogram}
-\title{Calculate Average periodogram}
+\title{Calculate Average periodogram over whole landscape from aggregate data in 'Output files'}
 \usage{
 AveragePeriodogram(
   DataDir,
@@ -52,8 +52,8 @@ AveragePeriodogram(
 \item{Values}{Vector of parameter values for the Moran's I to be calculated for}
 }
 \value{
-Standard Error
+Grob with the average peiodogram plotted if data = F, data.frame containing the data used to produce grob if data = T
 }
 \description{
-Calculate Average periodogram
+Calculate Average periodogram over whole landscape from aggregate data in 'Output files'
 }

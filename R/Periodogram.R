@@ -39,7 +39,7 @@ periodogram<- function(sbw, smoothing=1, spli=2, val="", averageline=0, data=F){
 	if(data==F){
 		return(P)
 	} else if(data=='All') {
-		return(list(freq[2:(N/spli)], p[2:(N/spli)]))
+		return(data.frame(Frequency=freq[2:(N/spli)], Intensity=p[2:(N/spli)]))
 	} else {
 		return(p[2:(N/spli)])
 	}
