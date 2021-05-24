@@ -38,7 +38,7 @@ periodogram<- function(sbw, smoothing=1, spli=2, val="", averageline=0, data=F){
 	P <- ggplot() + geom_line(aes(x=freq[2:(N/spli)], y=p[2:(N/spli)])) + xlab("Freq.") +ggtitle(val)
 	if(data==F){
 		return(P)
-	} else if(data=='All' {
+	} else if(data=='All') {
 		return(list(freq[2:(N/spli)], p[2:(N/spli)]))
 	} else {
 		return(p[2:(N/spli)])
