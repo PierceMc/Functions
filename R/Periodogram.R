@@ -173,6 +173,7 @@ AveragePeriodogram <- function(DataDir, Variable, Value, Species, globr, reps, b
 		tmpdata=tmpdata[burnin:(reps-2),Species]
 	}
 	if(is.numeric(Density)){
+		print("Density")
 		tmpdata <- tmpdata/Density
 	}
 	tmpPlotdata=periodogramplotdata(tmpdata, 1, 2)
