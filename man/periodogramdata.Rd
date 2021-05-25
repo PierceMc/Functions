@@ -15,7 +15,7 @@ periodogramdata(sbw, smoothing, spli, val = "", Method = "fft")
 
 \item{val}{Title for plot}
 
-\item{Method}{'fft' or 'Welsh'}
+\item{Method}{'fft' or 'Walsh'}
 }
 \value{
 periodogram data

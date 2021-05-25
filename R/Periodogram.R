@@ -100,7 +100,7 @@ periodogramlines<- function(sbw, smoothing, spli, val="", averageline=0){
 #' @param smoothing window for moving average
 #' @param spli should be 2
 #' @param val Title for plot
-#' @param Method 'fft' or 'Welsh'
+#' @param Method 'fft' or 'Walsh'
 #' @return periodogram data
 #' @export
 periodogramdata<- function(sbw, smoothing, spli, val="", Method='fft'){
@@ -111,7 +111,7 @@ periodogramdata<- function(sbw, smoothing, spli, val="", Method='fft'){
 	N <- length(sbw)
 	if(Method=='fft'){
 		xdft <- (1/(N^(1/2)))*fft(sbw)
-	} else if (Method == 'Welsh'){
+	} else if (Method == 'Walsh'){
 		xdft <- (1/(N^(1/2)))*fft(sbw)
 	}
 	p <- abs(xdft)^2
@@ -128,7 +128,7 @@ periodogramdata<- function(sbw, smoothing, spli, val="", Method='fft'){
 #' @param spli should be 2
 #' @param val Title for plot
 #' @param averageline Line placement for an averageline 
-#' @param Method 'fft' or 'Welsh'
+#' @param Method 'fft' or 'Walsh'
 #' @return periodogram data structured for plotting
 #' @export
 periodogramplotdata<- function(sbw, smoothing, spli, val="", struc="list", Method='fft'){
@@ -137,9 +137,9 @@ periodogramplotdata<- function(sbw, smoothing, spli, val="", struc="list", Metho
 	sbw <- sbw[-c(1:smoothing,(length(sbw)-smoothing):length(sbw))]
 	Fs <- 1 #Sampling Rate
 	N <- length(sbw)
-	if(Method=='fft'){
+	if(Method =='fft'){
 		xdft <- (1/(N^(1/2)))*fft(sbw)
-	} else if (Method == 'Welsh'){
+	} else if (Method == 'Walsh'){
 		xdft <- (1/(N^(1/2)))*fft(sbw)
 	}
 	p <- abs(xdft)^2

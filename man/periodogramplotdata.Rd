@@ -22,7 +22,7 @@ periodogramplotdata(
 
 \item{val}{Title for plot}
 
-\item{Method}{'fft' or 'Welsh'}
+\item{Method}{'fft' or 'Walsh'}
 
 \item{averageline}{Line placement for an averageline}
 }
