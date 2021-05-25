@@ -4,7 +4,14 @@
 \alias{periodogramplotdata}
 \title{Calculate periodogram}
 \usage{
-periodogramplotdata(sbw, smoothing, spli, val = "", struc = "list")
+periodogramplotdata(
+  sbw,
+  smoothing,
+  spli,
+  val = "",
+  struc = "list",
+  Method = "fft"
+)
 }
 \arguments{
 \item{sbw}{Vector of values}
@@ -14,6 +21,8 @@ periodogramplotdata(sbw, smoothing, spli, val = "", struc = "list")
 \item{spli}{should be 2}
 
 \item{val}{Title for plot}
+
+\item{Method}{'fft' or 'Welsh'}
 
 \item{averageline}{Line placement for an averageline}
 }

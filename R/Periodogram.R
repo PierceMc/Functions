@@ -128,15 +128,20 @@ periodogramdata<- function(sbw, smoothing, spli, val="", Method='fft'){
 #' @param spli should be 2
 #' @param val Title for plot
 #' @param averageline Line placement for an averageline 
+#' @param Method 'fft' or 'Welsh'
 #' @return periodogram data structured for plotting
 #' @export
-periodogramplotdata<- function(sbw, smoothing, spli, val="", struc="list"){
+periodogramplotdata<- function(sbw, smoothing, spli, val="", struc="list", Method='fft'){
 	sbw = sbw-mean(sbw)
 	sbw <- ma(sbw, smoothing)
 	sbw <- sbw[-c(1:smoothing,(length(sbw)-smoothing):length(sbw))]
 	Fs <- 1 #Sampling Rate
 	N <- length(sbw)
-	xdft <- (1/(N^(1/2)))*fft(sbw)
+	if(Method=='fft'){
+		xdft <- (1/(N^(1/2)))*fft(sbw)
+	} else if (Method == 'Welsh'){
+		xdft <- (1/(N^(1/2)))*fft(sbw)
+	}
 	p <- abs(xdft)^2
 	p <- p[1:(N/spli+1)]
 	p[2:(N/spli)] = spli*p[2:(N/spli)];
