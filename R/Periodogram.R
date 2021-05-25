@@ -112,7 +112,7 @@ periodogramdata<- function(sbw, smoothing, spli, val="", Method='fft'){
 	if(Method=='fft'){
 		xdft <- (1/(N^(1/2)))*fft(sbw)
 	} else if (Method == 'Walsh'){
-		xdft <- (1/(N^(1/2)))*fft(sbw)
+		xdft <- (1/(N^(1/2)))*fwt(sbw)
 	}
 	p <- abs(xdft)^2
 	p <- p[1:(N/spli+1)]
@@ -140,7 +140,7 @@ periodogramplotdata<- function(sbw, smoothing, spli, val="", struc="list", Metho
 	if(Method =='fft'){
 		xdft <- (1/(N^(1/2)))*fft(sbw)
 	} else if (Method == 'Walsh'){
-		xdft <- (1/(N^(1/2)))*fft(sbw)
+		xdft <- (1/(N^(1/2)))*fwt(sbw)
 	}
 	p <- abs(xdft)^2
 	p <- p[1:(N/spli+1)]
