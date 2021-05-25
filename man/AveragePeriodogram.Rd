@@ -17,7 +17,8 @@ AveragePeriodogram(
   Title = T,
   yl = T,
   data = F,
-  Density = F
+  Density = F,
+  Method = "fft"
 )
 }
 \arguments{
@@ -47,6 +48,10 @@ AveragePeriodogram(
 
 \item{Density}{\itemize{
 \item optional: Value of total area for density calculations
+}}
+
+\item{Method}{\itemize{
+\item method for transformation. Default = 'fft'. Options: 'fft', 'Walsh'
 }}
 
 \item{Values}{Vector of parameter values for the Moran's I to be calculated for}

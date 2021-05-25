@@ -100,16 +100,20 @@ periodogramlines<- function(sbw, smoothing, spli, val="", averageline=0){
 #' @param smoothing window for moving average
 #' @param spli should be 2
 #' @param val Title for plot
-#' @param averageline Line placement for an averageline 
+#' @param Method 'fft' or 'Welsh'
 #' @return periodogram data
 #' @export
-periodogramdata<- function(sbw, smoothing, spli, val=""){
+periodogramdata<- function(sbw, smoothing, spli, val="", Method='fft'){
 	sbw = sbw-mean(sbw)
 	sbw <- ma(sbw, smoothing)
 	sbw <- sbw[-c(1:smoothing,(length(sbw)-smoothing):length(sbw))]
 	Fs <- 1 #Sampling Rate
 	N <- length(sbw)
-	xdft <- (1/(N^(1/2)))*fft(sbw)
+	if(Method=='fft'){
+		xdft <- (1/(N^(1/2)))*fft(sbw)
+	} else if (Method == 'Welsh'){
+		xdft <- (1/(N^(1/2)))*fft(sbw)
+	}
 	p <- abs(xdft)^2
 	p <- p[1:(N/spli+1)]
 	p[2:(N/spli)] = spli*p[2:(N/spli)];
@@ -160,10 +164,12 @@ periodogramplotdata<- function(sbw, smoothing, spli, val="", struc="list"){
 #' @param yl Remove y label
 #' @param data - optional: Return plot data rather than grob
 #' @param Density - optional: Value of total area for density calculations
+#' @param Method - method for transformation. Default = 'fft'. Options: 'fft', 'Walsh'
 #' @return Grob with the average peiodogram plotted if data = F, data.frame containing the data used to produce grob if data = T
 #' @export
-AveragePeriodogram <- function(DataDir, Variable, Value, Species, globr, reps, burnin, plotmax=0, Names=0, Title=T, yl=T, data=F, Density=F){
+AveragePeriodogram <- function(DataDir, Variable, Value, Species, globr, reps, burnin, plotmax=0, Names=0, Title=T, yl=T, data=F, Density=F, Method='fft'){
 	if(globr < 1)stop('No data'); 
+	method=Method
 	tmpdata <- read.csv(paste0(DataDir, 'Output', Variable, Value, "run1.csv"), header=T)
 	Hosts=F
 	if(Species %in% c("Hosts", "Host", "host", "hosts")){Hosts = T}
@@ -179,7 +185,7 @@ AveragePeriodogram <- function(DataDir, Variable, Value, Species, globr, reps, b
 		print("Density")
 		tmpdata <- tmpdata/Density
 	}
-	tmpPlotdata=periodogramplotdata(tmpdata, 1, 2)
+	tmpPlotdata=periodogramplotdata(tmpdata, 1, 2, Method=method)
 	PlotData=tmpPlotdata[[1]]
 	PlotData=cbind(PlotData, tmpPlotdata[[2]])
 	for(i in 2:globr){
@@ -192,7 +198,7 @@ AveragePeriodogram <- function(DataDir, Variable, Value, Species, globr, reps, b
 		} else {
 			tmpdata=tmpdata[burnin:(reps-2),Species]
 		}
-		tmpPlotdata=periodogramdata(tmpdata, 1, 2)
+		tmpPlotdata=periodogramdata(tmpdata, 1, 2, Method=method)
 		PlotData=cbind(PlotData, tmpPlotdata)
 	}
 	OutputPlotData=data.frame("Freq." = PlotData[,1], "Mean" = apply(PlotData[,-1], 1, mean, na.rm=T))

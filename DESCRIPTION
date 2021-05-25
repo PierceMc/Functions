@@ -30,4 +30,5 @@ Imports:
 	doParallel,
 	rasterVis,
 	foreach,
+	TSAUMN,
 	doSNOW
