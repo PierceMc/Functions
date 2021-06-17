@@ -79,16 +79,22 @@ Means <- function(workingdir, vari, i, burnin, reps=0, r=32, fun="mean", raw=F){
 		if(is.null(ncol(prims))) return(c(0,0,0,0,0,0))
 		
 		primsmean=apply(prims, 2, mean)
+		primsmedian=apply(prims, 2, median)
 		primsse <- apply(prims, 2, se)
 		secsmean=apply(secs, 2, mean)
+		secsmedian=apply(secs, 2, median)
 		secsse=apply(secs, 2,se)
 		nonsmean=apply(nons, 2, mean)
+		nonsmedian=apply(nons, 2, median)
 		nonsse=apply(nons, 2,se)
 		sbwsmean=apply(sbws, 2, mean)
+		sbwsmedian=apply(sbws, 2, median)
 		sbwsse=apply(sbws, 2,se)
 		parasmean=apply(paras, 2, mean)
+		parasmedian=apply(paras, 2, median)
 		parasse=apply(paras, 2,se)
 		cdsmean=apply(cds, 2, mean)
+		cdsmedian=apply(cds, 2, median)
 		cdsse=apply(cds, 2,se)
 
 		if(fun=='mean'){
@@ -105,6 +111,14 @@ Means <- function(workingdir, vari, i, burnin, reps=0, r=32, fun="mean", raw=F){
 			MeanParasitoidSD = signif(TotEr(parasmean, parasse), 3)
 			MeanCDSD = round(TotEr(cdsmean, cdsse), 3)
 			return(data.frame(Variable=c('Primary', 'Secondary', 'NonHost', 'Herbivore', 'Parasitoid','Defoliation'),Mean=c(MeanPrim, MeanSec, MeanNon, MeanSBW, MeanParasitoid, MeanCD),SD=c(MeanPrimSD, MeanSecSD, MeanNonSD, MeanSBWSD, MeanParasitoidSD, MeanCDSD)))
+		} else if(fun=='median'){
+			MeanPrim= signif(median(primsmedian, na.rm=T), 2)
+			MeanSec= signif(median(secsmedian, na.rm=T), 2)
+			MeanNon= signif(median(nonsmedian, na.rm=T), 2)
+			MeanSBW = signif(median(sbwsmedian, na.rm=T), 2)
+			MeanParasitoid = signif(median(parasmedian, na.omit=T), 2)
+			MeanCD = signif(median(cdsmedian, na.rm=T), 2)
+			return(data.frame(Variable=c('Primary', 'Secondary', 'NonHost', 'Herbivore', 'Parasitoid','Defoliation'),Median=c(MeanPrim, MeanSec, MeanNon, MeanSBW, MeanParasitoid, MeanCD)))
 		} else if(fun == "PeriodMax"){
 			PeriodMean=round(mean(periods, na.rm=T), 2)
 			PeriodSD=round(sd(periods), 2)
