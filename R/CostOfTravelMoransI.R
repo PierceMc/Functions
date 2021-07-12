@@ -15,10 +15,6 @@
 #' @export
 Morans.LC <- function(BaseDir, Variable, Values, dclasses, Species='SBW', NSims=32, Samples=32, N=2000, Transition="transitionfunc", ncores=4, verbose=F, SampleLength=15){
 
-	require(gdistance)
-	require(doSNOW)
-	require(parallel)
-	require(doParallel)
 	Output <- list()
 	
 	if(Transition != 'transitionfunc'){

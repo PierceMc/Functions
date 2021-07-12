@@ -13,9 +13,6 @@
 #' @export
 rij.corr <- function(Array, ms, N, dclasses, parallel = T, ncores=4, verbose=F, timelag=0, SecondArray=NA){
 
-	require(raster)
-	require(doSNOW)
-	require(doParallel)
 
 	nd<-length(dclasses)
 	tmpdata <- data.frame()
