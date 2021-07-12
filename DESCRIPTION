@@ -15,18 +15,9 @@ RoxygenNote: 7.1.1
 Imports:
 	dplyr,
 	raster,
-	plot3D,
-	plot.matrix,
 	ggplot2,
-	plotrix,
-	OneR, 
-	gdistance,
-	spatstat,
-	spdep,
 	Matrix,
-	ape,
 	gridExtra,
 	doParallel,
 	rasterVis,
-	foreach,
-	doSNOW
+	foreach
