@@ -172,7 +172,7 @@ periodogramplotdata<- function(sbw, smoothing, spli, val="", struc="list", Metho
 #' @param Method - method for transformation. Default = 'fft'. Options: 'fft', 'Walsh'
 #' @return Grob with the average peiodogram plotted if data = F, data.frame containing the data used to produce grob if data = T
 #' @export
-AveragePeriodogram <- function(DataDir, Variable, Value, Species, globr, reps, burnin, plotmax=0, Names=0, Title=T, yl=T, data=F, Density=F, Method='fft'){
+AveragePeriodogram <- function(DataDir, Variable, Value, Species, globr, reps, burnin, plotmax=0, Names=0, Title=T, yl=T, data=F, Density=F, Method='fft', ggpltstring=""){
 	if(globr < 1)stop('No data'); 
 	method=Method
 	tmpdata <- read.csv(paste0(DataDir, 'Output', Variable, Value, "run1.csv"), header=T)
@@ -212,12 +212,13 @@ AveragePeriodogram <- function(DataDir, Variable, Value, Species, globr, reps, b
 	SE[is.infinite(SE)] = 0
 	OutputPlotData$SE <- SE
 	if(plotmax == 0){
-		OutputPlot <- ggplot(data=OutputPlotData, aes(y=Mean, x=Freq., ymin=Mean-SE, ymax=Mean+SE)) + geom_point() + geom_errorbar() + theme_bw() + ylab("Mean Power") + ggtitle(paste(Value))
+		OutputPlot <- ggplot(data=OutputPlotData, aes(y=Mean, x=Freq., ymin=Mean-SE, ymax=Mean+SE)) + geom_point() + geom_errorbar() + theme_bw() + ylab("Mean Power") + ggtitle(paste(Value)) 
 	} else{
 		OutputPlot <- ggplot(data=OutputPlotData, aes(y=Mean, x=Freq., ymin=Mean-SE, ymax=Mean+SE)) + geom_errorbar() + theme_bw() + ylab("Mean Power") + ggtitle(paste(Value)) + coord_cartesian(ylim=c(0,plotmax))
 	}
 	if(Title == F)(OutputPlot <- OutputPlot + ggtitle(""))
 	if(yl == F)(OutputPlot <- OutputPlot + ylab(""))
+	if(ggpltstring != "")(OutputPlot <- OutputPlot + ggpltstring)
 	if(data==F){
 		return(OutputPlot)
 	} else {

@@ -18,7 +18,8 @@ AveragePeriodogram(
   yl = T,
   data = F,
   Density = F,
-  Method = "fft"
+  Method = "fft",
+  ggpltstring = ""
 )
 }
 \arguments{
