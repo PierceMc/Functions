@@ -5,15 +5,21 @@
 \title{Round}
 \usage{
 mround(x, base)
+
+mround(x, base)
 }
 \arguments{
-\item{x}{numeric to round.}
+\item{x}{Ko te tau mo whakaawhiwhi.}
 
-\item{base}{Value to round to.}
+\item{base}{Ko te putake}
 }
 \value{
+Rounded value(s) of x
+
 Rounded value(s) of x
 }
 \description{
 Round
+
+Whakaawhiwhi
 }

@@ -14,7 +14,7 @@ subsample <- function(sizex, sizey, polygons, rasterize=F, layer=""){
 	newextent <- extent(randomx, randomx+sizex, randomy, randomy+sizey)
 	newpolygons <- crop(polygons, newextent)
 	if(is.null(newpolygons)){
-		newpolygons <- tipako_matapokere(sizex, sizey, polygons)
+		newpolygons <- subsample(sizex, sizey, polygons)
 	}
 	if(rasterize==T){
 		r <- raster(newpolygons, crs=proj4string(polygons), nrows=sizex,ncols=sizey)
