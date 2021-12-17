@@ -16,7 +16,7 @@ FirstDefol(x, nyears = 13, Defol = 2, maxyear = 2020)
 \item{maxyear}{Final year of data collection. Default=2020}
 }
 \value{
-
+Year of first defoliation
 }
 \description{
 Find the first year with defoliation equal to or greater than some threshold

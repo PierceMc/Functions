@@ -14,7 +14,7 @@ stepwise(x, direction = "backwards", test)
 \item{test}{AIC or BIC}
 }
 \value{
-
+AICModel
 }
 \description{
 Stepwise selection for AIC/BIC (Wrapper for MASS package stepAIC())

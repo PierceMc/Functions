@@ -14,7 +14,7 @@ CoxDataPrep(x, finalyear = 2020, strata = 23000)
 \item{strata}{Size of bins for stratification in metres. Default=23000}
 }
 \value{
-
+Year of first defoliation
 }
 \description{
 Prepare output of main.py for cox analysis

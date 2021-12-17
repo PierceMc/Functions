@@ -54,20 +54,20 @@ CoxModelSelector <- function(formula, data, ties='exact', direction='backwards',
 #' @param nyears time span to the data. Default=13
 #' @param Defol Threshold value. Default=2
 #' @param maxyear Final year of data collection. Default=2020
-#' @return 
-#' @export Year of first defoliation
+#' @return Year of first defoliation
+#' @export 
 FirstDefol <- function(x, nyears=13, Defol=2, maxyear=2020){
 	years <- (maxyear-nyears):maxyear
-	names=character()
-	for(i in years){
-		names=c(names, paste0('mean_defoliation', i))
-	}
-	cols=x[names]#c((length(x)-nyears):length(x))
-	year=min(which(x[names] >= Defol))+maxyear-nyears
-	if(year == Inf){
-		year=maxyear+1
-	}
-	return(year)
+		names=character()
+		for(i in years){
+			names=c(names, paste0('mean_defoliation', i))
+		}
+		cols=x[names]#c((length(x)-nyears):length(x))
+		year=min(which(x[names] >= Defol))+maxyear-nyears
+		if(year == Inf){
+			year=maxyear+1
+		}
+		return(year)
 }
 
 #' Find the first year with cumulative defoliation equal to or greater than some threshold
@@ -76,8 +76,8 @@ FirstDefol <- function(x, nyears=13, Defol=2, maxyear=2020){
 #' @param nyears time span to the data. Default=13
 #' @param maxyear Final year of data collection. Default=2020
 #' @param MortDefol Threshold value. Default=15
-#' @return 
-#' @export Year of mortality
+#' @return Year of mortality
+#' @export 
 Mortality <- function(x, nyears=13, maxyear=2020, MortDefol=15){
 	years <- (maxyear-nyears):maxyear
 	names=character()
@@ -100,8 +100,8 @@ Mortality <- function(x, nyears=13, maxyear=2020, MortDefol=15){
 #' @param x Data from main.py
 #' @param finalyear Final year of data collection. Default=2020
 #' @param strata Size of bins for stratification in metres. Default=23000
-#' @return 
-#' @export Year of first defoliation
+#' @return Year of first defoliation
+#' @export 
 CoxDataPrep <- function(x, finalyear=2020, strata=23000){
 	sampleddata <- x
 	sampleddata[is.na(sampleddata)]=0
@@ -121,8 +121,8 @@ CoxDataPrep <- function(x, finalyear=2020, strata=23000){
 #' @param x Model object
 #' @param direction Direction for searching
 #' @param test AIC or BIC
-#' @return 
-#' @export Year of first defoliation
+#' @return AICModel
+#' @export 
 stepwise <- function(x, direction='backwards', test){
 	if(test=="AIC"){
 		k=2

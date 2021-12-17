@@ -16,7 +16,7 @@ Mortality(x, nyears = 13, maxyear = 2020, MortDefol = 15)
 \item{MortDefol}{Threshold value. Default=15}
 }
 \value{
-
+Year of mortality
 }
 \description{
 Find the first year with cumulative defoliation equal to or greater than some threshold
