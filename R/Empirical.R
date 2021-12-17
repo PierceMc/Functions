@@ -1,6 +1,6 @@
 #' Variable Selection in a Cox Proportional Hazards Model
 #'
-#' @param formula Formulay object with the global model
+#' @param formula Formula object with the global model
 #' @param data Data to be passed to coxph
 #' @param ties Treatment of tied events. Default="exact'
 #' @param direction Direction of selection. Default='backwards', options 'backwards'
