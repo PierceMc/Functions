@@ -4,7 +4,7 @@
 \alias{stepwise}
 \title{Stepwise selection for AIC/BIC (Wrapper for MASS package stepAIC())}
 \usage{
-stepwise(x, direction = "backwards", test)
+stepwise(x, direction = "backwards", test, n = NULL)
 }
 \arguments{
 \item{x}{Model object}
@@ -12,6 +12,8 @@ stepwise(x, direction = "backwards", test)
 \item{direction}{Direction for searching}
 
 \item{test}{AIC or BIC}
+
+\item{n}{Number of observations (for BIC)}
 }
 \value{
 AICModel

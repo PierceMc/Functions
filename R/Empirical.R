@@ -121,13 +121,14 @@ CoxDataPrep <- function(x, finalyear=2020, strata=23000){
 #' @param x Model object
 #' @param direction Direction for searching
 #' @param test AIC or BIC
+#' @param n Number of observations (for BIC)
 #' @return AICModel
 #' @export 
-stepwise <- function(x, direction='backwards', test){
+stepwise <- function(x, direction='backwards', test,n=NULL){
 	if(test=="AIC"){
 		k=2
 	} else if(test=="BIC"){
-		k=log(nrow(x))
+		k=log(n)
 	}
 	formula=x$formula
 	result=stepAIC(x, formula, direction=direction, k=k)
