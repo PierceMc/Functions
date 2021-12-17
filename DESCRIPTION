@@ -20,4 +20,17 @@ Imports:
 	gridExtra,
 	doParallel,
 	rasterVis,
-	foreach
+	foreach,
+	MASS,
+	aod,
+	stringr,
+	ggplot2,
+	phd,
+	gridExtra,
+	survival,
+	betareg,
+	survminer,
+	emmeans,
+	nlme,
+	yhat
+
