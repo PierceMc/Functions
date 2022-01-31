@@ -78,7 +78,7 @@ FirstDefol <- function(x, nyears=13, Defol=2, maxyear=2020){
 #' @param MortDefol Threshold value. Default=15
 #' @return Year of mortality
 #' @export 
-Mortality <- function(x, nyears=13, maxyear=2020, MortDefol=15){
+Mortality <- function(x, nyears=13, maxyear=2020, MortDefol=600){
 	years <- (maxyear-nyears):maxyear
 	names=character()
 	for(i in years){

@@ -13,7 +13,7 @@ CoxModelSelector(
 )
 }
 \arguments{
-\item{formula}{Formulay object with the global model}
+\item{formula}{Formula object with the global model}
 
 \item{data}{Data to be passed to coxph}
 

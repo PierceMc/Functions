@@ -4,7 +4,7 @@
 \alias{Mortality}
 \title{Find the first year with cumulative defoliation equal to or greater than some threshold}
 \usage{
-Mortality(x, nyears = 13, maxyear = 2020, MortDefol = 15)
+Mortality(x, nyears = 13, maxyear = 2020, MortDefol = 600)
 }
 \arguments{
 \item{x}{vector including defoliation values.}
