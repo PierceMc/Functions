@@ -109,7 +109,7 @@ CoxDataPrep <- function(x, finalyear=2020, strata=23000){
 	sampleddata$time <- apply(sampleddata, 1, FirstDefol)
 	sampleddata$event <- as.numeric(!(sampleddata$time ==finalyear))
 	sampleddata$RoundedDistToOrigin <- mround(sampleddata$DistToOrigin, strata)
-	sampleddata$First <- apply(sampleddata, 1, FirstDefol, Defol=1)
+	sampleddata$First <- apply(sampleddata, 1, FirstDefol, Defol=50)
 	sampleddata$CumulativeDefoliation <- apply(sampleddata, 1, Mortality)
 	sampleddata$TimetilMortality <- sampleddata$CumulativeDefoliation - sampleddata$First
 	sampleddata$Mortality <- as.numeric(!sampleddata$CumulativeDefoliation ==finalyear)
