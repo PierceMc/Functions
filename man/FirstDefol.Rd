@@ -4,7 +4,7 @@
 \alias{FirstDefol}
 \title{Find the first year with defoliation equal to or greater than some threshold}
 \usage{
-FirstDefol(x, nyears = 13, Defol = 75, maxyear = 2020)
+FirstDefol(x, nyears = 13, Defol = 15, maxyear = 2020)
 }
 \arguments{
 \item{x}{vector including defoliation values.}
