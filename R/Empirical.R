@@ -102,15 +102,15 @@ Mortality <- function(x, nyears=13, maxyear=2020, MortDefol=600){
 #' @param strata Size of bins for stratification in metres. Default=23000
 #' @return Year of first defoliation
 #' @export 
-CoxDataPrep <- function(x, finalyear=2020, strata=23000){
+CoxDataPrep <- function(x, finalyear=2020, strata=23000, OnsetDefol=50, Mortdefol=600){
 	sampleddata <- x
 	sampleddata[is.na(sampleddata)]=0
 	sampleddata <- na.omit(sampleddata)
-	sampleddata$time <- apply(sampleddata, 1,Mortality, MortDefol = 50)
+	sampleddata$time <- apply(sampleddata, 1,Mortality, MortDefol = OnsetDefol)
 	sampleddata$event <- as.numeric(!(sampleddata$time ==finalyear))
 	sampleddata$RoundedDistToOrigin <- mround(sampleddata$DistToOrigin, strata)
-	sampleddata$First <- apply(sampleddata, 1, Mortality, MortDefol=50)
-	sampleddata$CumulativeDefoliation <- apply(sampleddata, 1, Mortality)
+	sampleddata$First <- apply(sampleddata, 1, Mortality, MortDefol=OnsetDefol)
+	sampleddata$CumulativeDefoliation <- apply(sampleddata, 1, Mortality, MortDefol=Mortdefol)
 	sampleddata$TimetilMortality <- sampleddata$CumulativeDefoliation - sampleddata$First
 	sampleddata$Mortality <- as.numeric(!sampleddata$CumulativeDefoliation ==finalyear)
 	return(sampleddata)
