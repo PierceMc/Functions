@@ -106,7 +106,7 @@ CoxDataPrep <- function(x, finalyear=2020, strata=23000, OnsetDefol=50, Mortdefo
 	sampleddata <- x
 	sampleddata[is.na(sampleddata)]=0
 	sampleddata <- na.omit(sampleddata)
-	sampleddata$time <- apply(sampleddata, 1,Mortality, MortDefol = OnsetDefol)
+	sampleddata$time <- apply(sampleddata, 1, Mortality, MortDefol = OnsetDefol)
 	sampleddata$event <- as.numeric(!(sampleddata$time ==finalyear))
 	sampleddata$RoundedDistToOrigin <- mround(sampleddata$DistToOrigin, strata)
 	sampleddata$First <- apply(sampleddata, 1, Mortality, MortDefol=OnsetDefol)
@@ -135,4 +135,26 @@ stepwise <- function(x, direction='backwards', test,n=NULL){
 	return(result)	
 }
 
+
+#' Univariate cox model for apply function
+#'
+#' @param x Formula object for cox model
+#' @return AICModel
+#' @export 
+univariatecox <- function(x){ 
+                          x <- summary(x)
+                          p.value<-signif(x$wald["pvalue"], digits=5)
+                          wald.test<-signif(x$wald["test"], digits=5)
+                          beta<-signif(x$coef[1], digits=5);#coeficient beta
+                          HR <-signif(x$coef[2], digits=5);#exp(beta)
+                          HR.confint.lower <- signif(x$conf.int[,"lower .95"], 5)
+                          HR.confint.upper <- signif(x$conf.int[,"upper .95"],5)
+                          #HR <- paste0(HR, " (", 
+                                       #HR.confint.lower, "-", HR.confint.upper, ")")
+                          res<-c(beta,HR, HR.confint.lower, HR.confint.upper, wald.test, p.value)
+                          names(res)<-c("beta","HR", "HRlower", "HRupper", "wald.test", 
+                                        "p.value")
+                          return(res)
+                          #return(exp(cbind(coef(x),confint(x))))
+                         }
 
