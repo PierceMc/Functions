@@ -138,8 +138,8 @@ stepwise <- function(x, direction='backwards', test,n=NULL){
 
 #' Univariate cox model for apply function
 #'
-#' @param x Formula object for cox model
-#' @return AICModel
+#' @param x Cox model
+#' @return Formatted Cox Model
 #' @export 
 univariatecox <- function(x){ 
                           x <- summary(x)

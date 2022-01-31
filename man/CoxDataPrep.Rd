@@ -4,7 +4,13 @@
 \alias{CoxDataPrep}
 \title{Prepare output of main.py for cox analysis}
 \usage{
-CoxDataPrep(x, finalyear = 2020, strata = 23000)
+CoxDataPrep(
+  x,
+  finalyear = 2020,
+  strata = 23000,
+  OnsetDefol = 50,
+  Mortdefol = 600
+)
 }
 \arguments{
 \item{x}{Data from main.py}
