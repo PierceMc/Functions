@@ -56,7 +56,7 @@ CoxModelSelector <- function(formula, data, ties='exact', direction='backwards',
 #' @param maxyear Final year of data collection. Default=2020
 #' @return Year of first defoliation
 #' @export 
-FirstDefol <- function(x, nyears=13, Defol=2, maxyear=2020){
+FirstDefol <- function(x, nyears=13, Defol=75, maxyear=2020){
 	years <- (maxyear-nyears):maxyear
 		names=character()
 		for(i in years){
