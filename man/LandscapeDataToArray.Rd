@@ -10,7 +10,7 @@ LandscapeDataToArray(d, verbose = F)
 \item{data}{Output file from Cellular Automaton (OutbreakLandscape)}
 }
 \value{
-
+A 3-D Array
 }
 \description{
 Convert Cellular model output to 3 dimensional array

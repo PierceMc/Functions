@@ -10,7 +10,7 @@ nslice=function(x){
 #' Convert Cellular model output to 3 dimensional array
 #'
 #' @param data Output file from Cellular Automaton (OutbreakLandscape)
-#' @return 
+#' @return A 3-D Array
 #' @export
 LandscapeDataToArray <- function(d,verbose=F){
 	d=as.matrix(d)
