@@ -56,14 +56,14 @@ Means <- function(workingdir, vari, i, burnin, reps=0, r=32, fun="mean", raw=F){
 			newvals= read.csv(paste0(workingdir,"Output", vari, i ,  "run", x, ".csv"))
 			}
 
-			if(nrow(newvals) == reps){
+			#if(nrow(newvals) == reps){
 				prims=cbind(prims, newvals[,1])
 				secs=cbind(secs, newvals[,2])
 				nons=cbind(nons, newvals[,3])
 				sbws=cbind(sbws, newvals[,4])
 				paras=cbind(paras, newvals[,5])
 				cds=cbind(cds, newvals[,6])
-			}
+			#}
 			if(fun=="PeriodMax" || fun=="PeriodMaxPeak"){
 				max <- periodogrammax(newvals$SBW, 1, 2)
 				periods <- c(periods, max)
@@ -76,7 +76,7 @@ Means <- function(workingdir, vari, i, burnin, reps=0, r=32, fun="mean", raw=F){
 			return(out)
 		}
 
-		if(is.null(ncol(prims))) return(c(0,0,0,0,0,0))
+		if(is.null(nrow(prims))) return(c(0,0,0,0,0,0))
 		
 		primsmean=apply(prims, 2, mean)
 		primsmedian=apply(prims, 2, median)
